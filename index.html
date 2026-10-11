@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#081321">
+<meta name="description" content="CMTA Tools: herramientas de apoyo aeronáutico.">
+<title>CMTA Tools</title>
+<style>
+:root{color-scheme:dark;--bg:#081321;--panel:#101f30;--line:#293c50;--blue:#49baff;--text:#edf5ff;--muted:#a2b3c5}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding-bottom:30px}
+header{padding:30px 20px 22px;background:linear-gradient(145deg,#153651,#081321);border-bottom:1px solid var(--line)}
+.logo{font-size:11px;letter-spacing:3px;color:var(--blue);font-weight:800}
+h1{font-size:30px;margin:9px 0}
+header p{font-size:13px;color:var(--muted);line-height:1.5;margin:0}
+nav{display:flex;gap:8px;padding:12px 16px;overflow-x:auto;border-bottom:1px solid var(--line);position:sticky;top:0;background:#081321;z-index:5}
+nav a{white-space:nowrap;color:var(--blue);text-decoration:none;border:1px solid var(--line);border-radius:20px;padding:8px 11px;font-size:12px}
+main{max-width:760px;margin:auto;padding:17px}
+section{scroll-margin-top:65px;margin-bottom:28px}
+h2{font-size:18px;margin:22px 0 12px}
+.panel,.tile{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}
+.status{font-size:12px;color:var(--muted);line-height:1.8}
+.status strong{color:#75e5b7}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.tile{min-height:118px}
+.emoji{font-size:25px}
+.tile h3{font-size:14px;margin:10px 0 5px}
+.tile p,.small{font-size:12px;color:var(--muted);line-height:1.6;margin:0}
+label{display:block;font-size:13px;margin-top:12px;color:#d6e6f6}
+input,select,textarea{width:100%;padding:12px;margin-top:6px;border:1px solid var(--line);border-radius:9px;background:#081624;color:var(--text);font:inherit;font-size:16px}
+button,.linkbutton{display:inline-block;padding:12px 14px;border:1px solid #37658a;border-radius:9px;background:#14334c;color:white;font:inherit;font-size:14px;text-decoration:none;cursor:pointer;text-align:center}
+.primary{background:#1267a1;border-color:#1267a1;font-weight:700}
+.full{width:100%;margin-top:12px}
+.result{color:var(--blue);font-weight:700;font-size:15px;margin-top:12px;overflow-wrap:anywhere}
+.item{padding:12px 0;border-bottom:1px solid var(--line);font-size:14px;overflow-wrap:anywhere}
+.item button{margin-top:9px;margin-right:6px;padding:8px;font-size:12px}
+a{color:var(--blue)}
+.note{border-left:3px solid #d6a34c;padding-left:10px}
+footer{text-align:center;color:var(--muted);font-size:11px;line-height:1.8;padding:20px}
+@media(min-width:600px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}main{padding:24px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="logo">AVIATION OPERATIONS</div>
+ <h1>CMTA Tools <span style="color:#49baff">✈</span></h1>
+ <p>Centro de herramientas para el control de tránsito aéreo</p>
+</header>
+
+<nav>
+ <a href="#inicio">Inicio</a>
+ <a href="#calculadora">Calculadoras</a>
+ <a href="#directorio">Directorio</a>
+ <a href="#met">MET / NOTAM</a>
+ <a href="#aerodromos">Aeródromos</a>
+</nav>
+
+<main>
+<section id="inicio">
+ <div class="panel status">
+  ESTADO DEL PROTOTIPO<br>
+  <strong>● APLICACIÓN INICIALIZADA</strong><br>
+  Herramientas de apoyo · Información operacional no validada por esta aplicación.
+ </div>
+ <h2>Centro de herramientas</h2>
+ <div class="grid">
+  <a class="tile" href="#met" style="text-decoration:none;color:inherit">
+   <div class="emoji">🌦️</div><h3>Meteorología / NOTAM</h3><p>Accesos a fuentes aeronáuticas oficiales.</p>
+  </a>
+  <a class="tile" href="#aerodromos" style="text-decoration:none;color:inherit">
+   <div class="emoji">🗺️</div><h3>Aeródromos</h3><p>Acceso a documentación y cartas.</p>
+  </a>
+  <a class="tile" href="#calculadora" style="text-decoration:none;color:inherit">
+   <div class="emoji">🧮</div><h3>Calculadoras</h3><p>Conversión de unidades.</p>
+  </a>
+  <a class="tile" href="#directorio" style="text-decoration:none;color:inherit">
+   <div class="emoji">📞</div><h3>Directorio</h3><p>Registro local de contactos.</p>
+  </a>
+ </div>
+</section>
+
+<section id="calculadora">
+ <h2>Calculadoras y conversiones</h2>
+ <div class="panel">
+  <label for="valor">Valor</label>
+  <input id="valor" type="number" inputmode="decimal" placeholder="Introduce un valor">
+  <label for="tipo">Tipo de conversión</label>
+  <select id="tipo">
+   <option value="nmkm">Millas náuticas → kilómetros</option>
+   <option value="kmnm">Kilómetros → millas náuticas</option>
+   <option value="ftm">Pies → metros</option>
+   <option value="mft">Metros → pies</option>
+   <option value="ktkmh">Nudos → km/h</option>
+   <option value="kmhkt">Km/h → nudos</option>
+   <option value="cft">Celsius → Fahrenheit</option>
+   <option value="ftc">Fahrenheit → Celsius</option>
+   <option value="hpaIn">hPa → inHg</option>
+   <option value="inHpa">inHg → hPa</option>
+  </select>
+  <button class="primary full" onclick="convertir()">Calcular conversión</button>
+  <div id="resultado" class="result" aria-live="polite"></div>
+  <p class="small note" style="margin-top:14px">Herramienta de referencia. Comprueba las unidades y los resultados antes de cualquier uso operacional.</p>
+ </div>
+</section>
+
+<section id="directorio">
+ <h2>Directorio de contactos</h2>
+ <div class="panel">
+  <p class="small">Los contactos se almacenan en el navegador de este dispositivo. No introduzcas información restringida o sensible.</p>
+  <label for="nombre">Nombre o servicio</label>
+  <input id="nombre" autocomplete="off" placeholder="Ej. Servicio de operaciones">
+  <label for="telefono">Teléfono o extensión</label>
+  <input id="telefono" autocomplete="off" placeholder="Número de contacto">
+  <button class="primary full" onclick="agregar()">Guardar contacto</button>
+  <div id="contactos" aria-live="polite"></div>
+ </div>
+</section>
+
+<section id="met">
+ <h2>Meteorología y NOTAM</h2>
+ <div class="panel">
+  <p class="small">Esta versión no obtiene METAR, TAF ni NOTAM en tiempo real. Consulta los servicios aeronáuticos oficiales y confirma siempre la vigencia de la información.</p>
+  <a class="linkbutton primary full" href="https://www.dgac.gob.cl/" target="_blank" rel="noopener noreferrer">DGAC Chile ↗</a>
+  <a class="linkbutton full" href="https://www.aviationweather.gov/" target="_blank" rel="noopener noreferrer">Aviation Weather Center ↗</a>
+  <p class="small note" style="margin-top:14px">Los servicios externos pueden tener distintas coberturas y no sustituyen las fuentes oficiales aplicables a tu operación.</p>
+ </div>
+</section>
+
+<section id="aerodromos">
+ <h2>Cartas y datos de aeródromos</h2>
+ <div class="panel">
+  <p class="small">Accede a la autoridad aeronáutica para localizar publicaciones y documentación disponibles. Las cartas no están almacenadas ni validadas por esta aplicación.</p>
+  <a class="linkbutton primary full" href="https://www.dgac.gob.cl/" target="_blank" rel="noopener noreferrer">Consultar DGAC Chile ↗</a>
+ </div>
+</section>
+
+<section id="acerca">
+ <h2>Acerca de CMTA Tools</h2>
+ <div class="panel">
+  <p class="small">Prototipo independiente y gratuito. No es un sistema oficial de navegación ni de control de tránsito aéreo. No debe utilizarse como fuente primaria para decisiones operacionales.</p>
+  <p class="small">Los contactos dependen del almacenamiento local del navegador y pueden perderse si se borran sus datos.</p>
+ </div>
+</section>
+</main>
+
+<footer>
+ CMTA Tools · Prototipo web independiente<br>
+ Verifica siempre la información con las fuentes oficiales vigentes.
+</footer>
+
+<script>
+function convertir(){
+ const campo=document.getElementById('valor');
+ const salida=document.getElementById('resultado');
+ const tipo=document.getElementById('tipo').value;
+ if(campo.value.trim()===''){salida.textContent='Introduce un valor para calcular.';return}
+ const n=Number(campo.value);
+ if(!Number.isFinite(n)){salida.textContent='Introduce un número válido.';return}
+ const operaciones={
+  nmkm:[n=>n*1.852,'km'],
+  kmnm:[n=>n/1.852,'NM'],
+  ftm:[n=>n*0.3048,'m'],
+  mft:[n=>n/0.3048,'ft'],
+  ktkmh:[n=>n*1.852,'km/h'],
+  kmhkt:[n=>n/1.852,'kt'],
+  cft:[n=>n*9/5+32,'°F'],
+  ftc:[n=>(n-32)*5/9,'°C'],
+  hpaIn:[n=>n/33.8638866667,'inHg'],
+  inHpa:[n=>n*33.8638866667,'hPa']
+ };
+ const op=operaciones[tipo];
+ salida.textContent=op[0](n).toLocaleString('es-CL',{maximumFractionDigits:5})+' '+op[1];
+}
+
+function leerContactos(){
+ try{return JSON.parse(localStorage.getItem('cmta-tools-contactos')||'[]')}
+ catch(e){return []}
+}
+function pintarContactos(){
+ const zona=document.getElementById('contactos');
+ zona.replaceChildren();
+ leerContactos().forEach((c,i)=>{
+  const fila=document.createElement('div');
+  fila.className='item';
+  const texto=document.createElement('div');
+  texto.textContent=c.nombre+' — '+c.telefono;
+  const borrar=document.createElement('button');
+  borrar.textContent='Eliminar';
+  borrar.onclick=()=>{
+   const lista=leerContactos();
+   lista.splice(i,1);
+   localStorage.setItem('cmta-tools-contactos',JSON.stringify(lista));
+   pintarContactos();
+  };
+  fila.append(texto,borrar);
+  zona.append(fila);
+ });
+}
+function agregar(){
+ const nombre=document.getElementById('nombre').value.trim();
+ const telefono=document.getElementById('telefono').value.trim();
+ if(!nombre||!telefono){alert('Completa el nombre y el teléfono.');return}
+ const lista=leerContactos();
+ lista.push({nombre,telefono});
+ try{
+  localStorage.setItem('cmta-tools-contactos',JSON.stringify(lista));
+ }catch(e){
+  alert('No se pudieron guardar los contactos en este navegador.');
+  return;
+ }
+ document.getElementById('nombre').value='';
+ document.getElementById('telefono').value='';
+ pintarContactos();
+}
+pintarContactos();
+</script>
+</body>
+</html>
